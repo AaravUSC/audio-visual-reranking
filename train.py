@@ -20,7 +20,6 @@ import torch.nn.functional as F
 from lib.reranker.loader import RerankDataset
 from lib.models import TransformerPipeline, MultimodalTransformerPipeline
 from main import init_word_to_token
-from transformers import GPT2Tokenizer, GPT2Model, AutoModelWithLMHead, DataCollatorForLanguageModeling
 import csv
 import sys
 
