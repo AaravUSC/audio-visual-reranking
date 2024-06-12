@@ -6,5 +6,20 @@ This repository evaluates the utility of pre-trained language and vision models 
 
 This repository uses the ALFRED dataset and accompanying synthetic spoken instructions generated [here](https://github.com/Cylumn/embodied-multimodal-asr/). 
 
-## Data download
+## Setup
 
+After cloning the repository, install the requirements:
+> $ pip install -r requirements.txt
+
+Download the dataset:
+> sh download_data.sh full
+
+Generate synthetic spoken instructions:
+> $ python preprocess.py
+
+## Training
+
+To train the reranker, run the following command:
+> python train.py --run='{base}_[{noise}]_50' --id_noise='{noise}' --dir_source='data'
+> base: 'unimodal' or 'multi[clip]': whether baseline model to generate transcripts is unimodal (only uses audio) or multimodal (uses audio & image)
+> noise: 'mix_clean' or 'mix_mask_1.0_nouns' or 'mix_mask_0.4_all': noise setting used to train base model and reranker; of the form (speaker-type)\_(noise-type)\_(proportion-of-tgt-masked)\_(target-words)
